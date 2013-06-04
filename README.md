@@ -1,16 +1,6 @@
 # gtoc is a simple library that converts a geographic coordinate to a Cartesian coordinate in Ruby.
 ====
 
-## Table Of Contents
----
-    * [Overview](#section_Overview)
-    * [QuickStart](#section_QuickStart)
-    * [How to Use](#section_How_to_Use)
-    * [Document](#section_Document)
-	* [Test](#section_Test)
-	* [Reference](#section_Reference)
-	
-<a name="section_Overview"></a>
 ## Overview
 ---
 This library converts a geographic coordinate that consists of a north latitude and an east longitude, to a Cartesian coordinate that consists of a reference geographic coordinate, an x coordinate and a y coordinate.
@@ -19,7 +9,6 @@ Unfortunately this library currently supports **Japanese** coordinate only.
 Most of the equations are referred from [this web page](http://vldb.gsi.go.jp/sokuchi/surveycalc/algorithm/).
 
 
-<a name="section_QuickStart"></a>
 ## QuickStart
 ---
 This software works on **Ruby**. After installing **Ruby**, a sample in bin directory works simply as follows:
@@ -38,7 +27,6 @@ You can get an x-y coordinate in world geodetic datum if -t option is specified.
 The default value of -t option is "japan".
 
 
-<a name="section_How_to_Use"></a>
 ## How to Use
 ---
 An easiest way to know how to use the library, is to check bin/gtoc.
@@ -64,7 +52,6 @@ If the inputted arguments are invalid or the point scale factor is too large, `g
 	=> {x:=>nil, y:=>nil, m=>1.0194529}
 
 
-<a name="section_Document"></a>
 ## Document
 ---
 Rdoc document can be generated as follows:
@@ -72,7 +59,6 @@ Rdoc document can be generated as follows:
 	rake rdoc
 
 
-<a name="section_Test"></a>
 ## Test
 ---
 Unit test can be done as follows:
@@ -80,7 +66,6 @@ Unit test can be done as follows:
 	rake test
 	
 
-<a name="section_Reference"></a>
 ## Reference
 ---
 Equations used in codes: [http://vldb.gsi.go.jp/sokuchi/surveycalc/algorithm/](http://vldb.gsi.go.jp/sokuchi/surveycalc/algorithm/)
