@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+require 'optparse'
+
+# default args
+longitude, latitude, map_number, type = nil, nil, nil, "japan"
+
+# parse command line options.
+opts = OptionParser.new do |o|
+  o.on("-e EAST_LONGITUDE", "--east=EAST_LONGITUDE",
+       "specify an east longitude in decimal.") {|v| longitude = v.to_f}
+  o.on("-n NORTH_LATITUDE", "--north=NORTH_LONGITUDE",
+       "specify a north latitude in decimal.") {|v| latitude = v.to_f}
+  o.on("-m MAP_NUMBER", "--map=MAP_NUMBER",
+       "specify a reference map number from 1 to 19.") {|v| map_number = v.to_i}
+  o.on("-t GEODETIC_DATUM_TYPE", "--type=GEODETIC_DATUM_TYPE",
+       "specify a type of geodetic datum from 'world' or 'japan'.") {|v|
+    type = v}
+  begin
+    o.parse!
+  rescue
+    STDERR.puts "Invalid option!"
+    puts "#{o}"
+    exit
+  end
+end
+
+# check args
+if longitude.nil? || longitude < 0.0 || longitude > 360.0
+  STDERR.puts "invalid longitude: #{longitude}."
+  STDERR.puts "#{opts}"
+  exit
+end
+if latitude.nil? || latitude < 0.0 || latitude > 90.0
+  STDERR.puts "invalid latitude: #{latitude}."
+  STDERR.puts "#{opts}"
+  exit
+end
+if map_number.nil? || map_number < 1 || map_number > 19
+  STDERR.puts "invalid map number: #{map_number}."
+  STDERR.puts "#{opts}"
+  exit
+end
+unless ["world", "japan"].include?(type)
+  STDERR.puts "invalid type of geodetic datum: #{type}."
+  STDERR.puts "#{opts}"
+  exit
+end
+
+require 'gtoc'
+
+puts Geographic::gtoc(
+  latitude: latitude,
+  longitude: longitude,
+  number: map_number,
+  type: type
+)
