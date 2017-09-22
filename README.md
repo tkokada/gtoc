@@ -1,6 +1,8 @@
 # gtoc is a simple library that converts a geographic coordinate to a Cartesian coordinate in Ruby.
 ====
 
+[![Build Status](https://travis-ci.org/tkokada/gtoc.svg?branch=master)](https://travis-ci.org/tkokada/gtoc)
+
 ## Overview
 ---
 This library converts a geographic coordinate that consists of a north latitude and an east longitude, to a Cartesian coordinate that consists of a reference geographic coordinate, an x coordinate and a y coordinate.
